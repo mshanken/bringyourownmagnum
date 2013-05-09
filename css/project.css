@@ -1,0 +1,90 @@
+/* ========================================================= Main ===*/
+body{
+  background-color: #bbbab5;
+  font-family: 'ProximaNova', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0;
+}
+h1{
+  font-family: 'ProximaBold', sans-serif;
+  font-weight: 700;
+}
+h3{
+  font-family: 'ProximaBold', sans-serif;
+  font-weight: 700;
+}
+p{
+
+}
+/* ========================================================= Intro ===*/
+.intro{
+  background-image: url("../img/intro.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid #e0dfda;
+  box-shadow: 0 -1px 0 #6b6b68 inset;
+  padding: 60px 0;
+}
+/* ========================================================= Photos ===*/
+.photos{
+  background-image: url("../img/carbon_fibre_v2.png");
+  box-shadow: 0 0 30px rgba(0,0,0,0.6) inset;
+  padding: 70px 0 40px;
+}
+.photos ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.photos li{
+  margin-bottom: 30px;
+}
+.photos a{
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.photos a:hover{
+  text-decoration: none;
+}
+.thumbnail{
+  background-color:#fff;
+  border: 1px solid #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+a.thumbnail:hover, a.thumbnail:focus {
+  border: 1px solid #fff;
+  border-color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.photos img{
+
+}
+.photos span{
+  display: inline-block;
+}
+.photos i{
+  float: right;
+  margin: 5px 0 0 0;
+}
+.photos .twitter{
+  color: #00acee;
+}
+.photos .instagram{
+  color: #634d40;
+}
+/* ========================================================= Rules ===*/
+.rules{
+  border-top: 1px solid #e0dfda;
+  box-shadow: 0 1px 0 #6b6b68 inset;
+  padding: 40px 0;
+}
