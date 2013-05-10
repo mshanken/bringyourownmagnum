@@ -1,13 +1,16 @@
-// TODO: Incomplete migration. Paused to refactor models
+// app/js/collections/updates.js
+
 (function(){
 
   "use strict";
 
   define([
+    'backbone',
     'jquery',
-    '../models/defaultModel',
+    'underscore',
+    '../models/Update',
     'config'
-    ], function($, defaultModel, config){
+    ], function(Backbone, $, _, Update, config){
 
       var defaultCollection  = Backbone.Collection.extend({
 
@@ -16,7 +19,11 @@
         initialize: function () {
         },
 
-        model: defaultModel 
+        model: Update ,
+
+        fetch : function(){
+          console.log("Update the updates collection");
+        }
 
       });
 

@@ -35,14 +35,11 @@
   require([
     'underscore',
     'backbone',
-    'controllers/RootController',
     'router',
     'vm',
     'jquery'
-    ], function(_, Backbone, RootController, Router, Vm, $){
-      var rootController = Vm.create({}, 'RootController', RootController);
-      rootController.render();
-      Router.initialize({rootController: rootController});  // The router now has a copy of all main appview
+    ], function(_, Backbone, Router, Vm, $){
+      Router.initialize();  // The router now has a copy of all main appview
   });
 
 }());

@@ -11,6 +11,7 @@ define([
   var views = {}; // Object containing views
   var destroy = function (context, name, View, options){
 
+    // TODO: Parameterize views that aren't 'destroyed'
     if(name !== "MenuView"){
 
       //if(typeof options.template !== undefined)

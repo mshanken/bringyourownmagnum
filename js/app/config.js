@@ -9,7 +9,11 @@
   define(function(){
   
     return {
-      hashTag: "#swag"
+      hashTag: "#swag",
+      dataProviders : {
+        twitter : {},
+        instagram : {}
+      }
     };
   
   });
