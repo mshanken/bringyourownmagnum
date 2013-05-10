@@ -1,23 +1,22 @@
 General TODO:
+============
 
 * Gather requirements (browsers mainly)
 
 Version TODO:
+============
 
-0.1
-===
+__0.1__
 
-X Boot application architecture
-X Define basic models
-X Implement config and io
+* Boot application architecture
+* Define basic models
+* Implement config and io
 
-0.2
-===
+__0.2__
 
 - Configure keys and routes
 - Inform app of basic animations
 
-0.3
-===
+__0.3__
 
 - Do more advanced animations
