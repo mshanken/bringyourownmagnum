@@ -17,7 +17,7 @@
     var Update = Backbone.Model.extend({
       defaults : {
         url: "",
-        image_src : "",
+        image_src : "http://localhost:4000/img/placeholder.png",
         username: "",
         data_provider: ""
       },
@@ -25,7 +25,6 @@
         console.log("Update booted",arguments);
       },
       render : function(){
-        debugger;
         return _.template(updateTemplate)(this.attributes);
       }
     });

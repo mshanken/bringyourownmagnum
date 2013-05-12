@@ -27,15 +27,25 @@
           
           this.add([
             {
+              username: "Johnny",
+              data_provider : "twitter"
             },  
             {
+              username: "Jimmy",
+              data_provider : "instagram"
             },  
             {
+              username: "Johnny",
+              data_provider : "twitter"
             },  
             {
+              username: "Jimmy",
+              data_provider : "instagram"
             },  
             {
-            }
+              username: "Johnny",
+              data_provider : "twitter"
+            },  
           ]);
 
           this.trigger(Events.updated);

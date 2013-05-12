@@ -7,6 +7,8 @@
   username  : STRING
   data_provider : STRING, IS IN ['twitter','instagram']
 
+  TODO: Add guarding logic for data_providers. Previous attempt failed.
+
 -->
 
 <li class="span3">
@@ -18,20 +20,14 @@
   >
     <div class="caption">
       <span> <% if(typeof username  !== "undefined"){
-        print("@"+username);}else{print("NO USERNAME SPECIFIED");} %></span>
-      <% if(typeof data_provider !== "undefined"){
-           if(data_provider === "twitter"){
-             print("<i class='ss-icon ss-social twitter'>&#xF611;</i>");
-           }else if(data_provider === "instagram"){
-            print("<i class='ss-icon ss-social instagram'>&#xF641;</i>");
-           }else{
-            print("<i class='ss-icon ss-social'>INVALID DATA PROVIDER SPECIFIED. MUST BE EITHER 'twitter' OR 'instagram'</i>");
-           }
-         }else{
-          print("<i class='ss-icon ss-social'>NO DATA PROVIDER SPECIFIED</i>");
-         }
-         %>
-      <i class="ss-icon ss-social twitter">&#xF611;</i>
+        print("@"+username);}else{ print("NO USERNAME SPECIFIED");} %></span>
+      <%
+        if(data_provider === "twitter"){
+          print("<i class='ss-icon ss-social twitter'>&#xF611;</i>");
+        }else{
+         print("<i class='ss-icon ss-social instagram'>&#xF641;</i>");
+         }         
+        %>
     </div><!--/caption-->
   </a>
 </li>
