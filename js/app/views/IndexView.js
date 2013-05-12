@@ -11,15 +11,14 @@
     'vm',
     'events',
     'collections/updates',
-    'text!templates/IndexView.html',
-    'text!templates/UpdateContainer.html'
-    ], function($,_,Backbone,vm,Events,Updates,ViewTemplate, UpdateContainer){
+    'text!templates/IndexView.html'
+    ], function($,_,Backbone,vm,Events,Updates,ViewTemplate){
       var IndexView = Backbone.View.extend({
         el : "#content",
         els : {
-          updateContainerParent : "#updates",
-          currentUpdates : undefined,
-          nextUpdates : "#nextUpdates" 
+          currentUpdates : ".currentUpdate",
+          nextUpdates : ".nextUpdate",
+          updateContainerParent : "#updates"
         },
         collections : {},
         initialize: function(){
@@ -34,15 +33,19 @@
         clearUpdateContainer : function(){
           $(this.els.updateContainerParent).html('');
         },
-        bootstrapContainerSwitch : function(){
-          $(this.els.updateContainerParent).append(UpdateContainer);
-        },
         renderUpdates : function(){
           this.clearUpdateContainer();
-          this.bootstrapContainerSwitch();
           this.collections.updates.each(function(update){
-            $(this.els.nextUpdates).append(update.render());
+            $(this.els.updateContainerParent).append(update.render());
           },this);
+
+          $(this.els.nextUpdates).each(function(ndx, el){
+            console.log("Animate",el);
+            el.animate({
+              'margin-left':'-100%'
+            },500);
+          });
+
         }
       });
       return IndexView;
