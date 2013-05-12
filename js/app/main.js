@@ -17,6 +17,7 @@
       modernizr : '../libs/modernizr/modernizr',
       templates: '../../templates',
       cryptojs : '../libs/cryptojs/cryptojs',
+      TweenLite : '../libs/greensock/TweenLite',
       config : 'config'                 // Site-wide config
     },
 
@@ -37,8 +38,9 @@
     'backbone',
     'router',
     'vm',
-    'jquery'
-    ], function(_, Backbone, Router, Vm, $){
+    'jquery',
+    'TweenLite'
+    ], function(_, Backbone, Router, Vm, $,TweenLite){
       Router.initialize();  // The router now has a copy of all main appview
   });
 

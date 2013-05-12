@@ -16,6 +16,4 @@
     }, Backbone.Events);
     return vent;
   });
-
 }());
-

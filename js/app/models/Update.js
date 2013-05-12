@@ -9,23 +9,26 @@
   define([
     'backbone',
     'jquery',
+    'underscore',
     'config',
-    'underscore'
-  ], function(Backbone, $, config,underscore){
-  
+    'underscore',
+    'text!templates/Update.html'
+  ], function(Backbone, $, _, config,underscore, updateTemplate){
     var Update = Backbone.Model.extend({
       defaults : {
+        url: "",
+        image_src : "",
         username: "",
-        message : "",
-        image_url: "",
         data_provider: ""
       },
       initialize: function(){
         console.log("Update booted",arguments);
+      },
+      render : function(){
+        debugger;
+        return _.template(updateTemplate)(this.attributes);
       }
     });
-  
     return Update;
-  
   });
 }());

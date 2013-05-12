@@ -9,8 +9,9 @@
     'jquery',
     'underscore',
     '../models/Update',
-    'config'
-    ], function(Backbone, $, _, Update, config){
+    'config',
+    'events'
+    ], function(Backbone, $, _, Update, config, Events){
 
       var defaultCollection  = Backbone.Collection.extend({
 
@@ -23,6 +24,22 @@
 
         fetch : function(){
           console.log("Update the updates collection");
+          
+          this.add([
+            {
+            },  
+            {
+            },  
+            {
+            },  
+            {
+            },  
+            {
+            }
+          ]);
+
+          this.trigger(Events.updated);
+
         }
 
       });
