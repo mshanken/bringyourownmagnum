@@ -43,7 +43,6 @@
             $(el).removeClass(indexCtx.els.nextUpdates).addClass(indexCtx.els.currentUpdates).animate({
               'margin-left':'-100%'
             },500,"linear",function(){
-              // Hack to get around jQuery's stupid context switching
               indexCtx.addUpdate();        
               this.remove();
             });
