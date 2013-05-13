@@ -1,5 +1,7 @@
 // app/js/collections/updates.js
 
+// http://search.twitter.com/search.json?q=%23swag%20pic.twitter.com&rpp=5&include_entities=true&result_type=mixed
+
 (function(){
 
   "use strict";

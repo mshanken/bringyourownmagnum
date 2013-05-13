@@ -25,7 +25,10 @@
         console.log("Update booted",arguments);
       },
       render : function(){
-        return _.template(updateTemplate)(this.attributes);
+        // Do not want to alter the attributes object, cacheing in attr
+        var attr = this.attributes;
+        attr.cid = this.cid;
+        return _.template(updateTemplate)(attr);
       }
     });
     return Update;

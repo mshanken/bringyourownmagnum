@@ -2,16 +2,18 @@
 
   Update.html
 
-  url     : URL
-  image_src : URL, MIME: image/*
-  username  : STRING
+  cid           : ID (not stochastically unique, assigned by BB)
+  url           : URL
+  image_src     : URL, MIME: image/*
+  username      : STRING
   data_provider : STRING, IS IN ['twitter','instagram']
 
   TODO: Add guarding logic for data_providers. Previous attempt failed.
 
 -->
 
-<li class="span3" class="nextUpdate">
+<li id="<%= cid %>" class="span3 nextUpdate" style="float:left;display:inline;margin-left:100%">
+  
 <a <% if(typeof url  !== "undefined"){ print(" href='"+url+"'");} %> class="thumbnail">
   <img <% 
         if(typeof image_src  !== "undefined"){ print(" src='"+image_src+"'");}
