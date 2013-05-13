@@ -40,22 +40,16 @@
             $(this.els.updateContainerParent).append(update.render());
           },this);
           $(this.els.nextUpdates).each(function(ndx, el){
-            $(el).removeClass(indexCtx.els.nextUpdates).addClass(indexCtx.els.currentUpdates).animate({
-              'margin-left':'-100%'
-            },500,"linear",function(){
-              indexCtx.addUpdate();        
-              this.remove();
-            });
+            $(el).fadeIn();
+            //$(el).removeClass(indexCtx.els.nextUpdates).addClass(indexCtx.els.currentUpdates).fadeOut();
+            //indexCtx.addUpdate();
           });
         },
         addUpdate : function(){
+          window.addUpdate = this;
           var update = this.collections.updates.pop();
           $(this.els.updateContainerParent).append(update.render());
-          $("li#"+update.cid).animate({
-            'margin-left':'30px'
-          },500,"linear",function(){
-            console.log(this);
-          }); 
+          $("li#"+update.cid).fadeIn();
         }
       });
       return IndexView;
