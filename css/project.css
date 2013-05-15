@@ -1,6 +1,7 @@
 /* ========================================================= Main ===*/
 body{
   background-color: #bbbab5;
+  color: #fff;
   font-family: 'ProximaNova', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -8,47 +9,61 @@ body{
 }
 h1{
   color: #fff;
-  font-family: 'ProximaBold', sans-serif;
-  font-weight: 700;
+  font-family: 'liberator', serif;
+  font-weight: 400;
 }
 h3{
-  font-family: 'ProximaBold', sans-serif;
-  font-weight: 700;
+  font-family: 'liberator',serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0 0 10px;
 }
 p{
-  color: #999;
+  color: #ccc;
 }
 /* ========================================================= Intro ===*/
 .intro{
-  background-image: url("../img/leather.jpg");
+  background-image: url("../img/leather.png");
   border-bottom: 1px solid #000000;
     box-shadow: 0 -1px 0 #333333 inset;
-    padding: 20px 0;
+    padding: 20px 0 5px;
 }
 .intro img{
   display: block;
   margin: 15px auto;
 }
-.intro .span8{
+.intro .span9{
   background-color: rgba(0,0,0,0.3);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.9) inset, 0 1px 0 rgba(255,255,255,0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
   border-radius: 4px;
-margin-top: 28px;
-    padding: 35px;
+margin-top: 10px;
+    padding: 35px 35px 20px;
 }
 .intro{
   text-align: center;
 }
 .intro h1{
-  font-size: 44px;
+  font-size: 54px;
+  font-style: italic;
+  margin: 0 0 20px;
   text-transform: uppercase;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.7), 0 2px 2px rgba(0,0,0,0.6), 0 6px 3px rgba(0,0,0,0.5);
 }
 .intro p{
-  font-size: 15px;
+  font-size: 18px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+}
+.intro .porsche{
+  max-width: 100px;
+}
+.intro .stitch{
+  background-image: url("../img/stitch.png");
+    height: 8px;
+    margin: 20px 0 0;
 }
 /* ========================================================= Photos ===*/
 .photos{
-  background-image: url("../img/carbon_fibre_v2.png");
+  background-image: url("../img/seat.png");
   box-shadow: 0 0 30px rgba(0,0,0,0.6) inset;
   padding: 70px 0 40px;
 }
@@ -80,7 +95,7 @@ margin-top: 28px;
 a.thumbnail:hover, a.thumbnail:focus {
   border: 1px solid #fff;
   border-color: #fff;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
@@ -104,8 +119,19 @@ a.thumbnail:hover, a.thumbnail:focus {
 }
 /* ========================================================= Rules ===*/
 .rules{
-  background-image: url("../img/leather.jpg");
+  background-image: url("../img/leather.png");
   border-top: 1px solid #000;
   box-shadow: 0 1px 0 #333333 inset;
-  padding: 40px 0;
+  padding: 5px 0 40px;
+}
+.rules h3{
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6), 0 1px 5px rgba(0, 0, 0, 0.6);
+}
+.rules p{
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+}
+.rules .stitch{
+  background-image: url("../img/stitch.png");
+    height: 8px;
+    margin: 0 0 40px;
 }
