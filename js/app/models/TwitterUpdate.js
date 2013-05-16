@@ -1,6 +1,6 @@
-// app/js/models/Update.js
+// app/js/models/TwitterUpdate.js
 //
-// General representation of an application update
+// Representation of a twitter update
 
 (function(){
 
@@ -16,20 +16,19 @@
   ], function(Backbone, $, _, config,underscore, updateTemplate){
     var Update = Backbone.Model.extend({
       defaults : {
-        url: "",
-        image_src : "http://localhost:4000/img/placeholder.png",
-        username: "",
-        data_provider: ""
-      },
-      initialize: function(){
-        console.log("Update booted",arguments);
+        data_provider: "twitter"
       },
       render : function(){
         var attr = this.attributes;
         attr.cid = this.cid;
+        attr.url = "";
+        attr.image_src = this.attributes.entities.media[0].media_url;
+        attr.username = this.attributes.from_user_name;
+
         return _.template(updateTemplate)(attr);
       }
     });
     return Update;
   });
 }());
+

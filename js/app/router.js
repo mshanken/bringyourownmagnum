@@ -23,7 +23,6 @@
       router.on('route:index', function (argOne, argTwo) {
         require(['views/IndexView'], function (IndexView) {
           var loginController = Vm.create([], 'IndexView', IndexView);
-          loginController.render();
         });
       });
 
