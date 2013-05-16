@@ -1,6 +1,4 @@
-// app/js/collections/updates.js
-
-// http://search.twitter.com/search.json?q=%23swag%20pic.twitter.com&rpp=5&include_entities=true&result_type=mixed
+// app/js/collections/Updates.js
 
 (function(){
 
@@ -12,25 +10,28 @@
     'underscore',
     '../models/Update',
     'config',
-    'events'
-    ], function(Backbone, $, _, Update, config, Events){
+    'events',
+    'collections/TwitterUpdates',
+    'collections/InstagramUpdates'
+    ], function(Backbone, $, _, Update, config, Events,TwitterUpdates,InstagramUpdates){
 
       var defaultCollection  = Backbone.Collection.extend({
-
         initialize: function () {
-          this.listenTo(this.collections.twitterUpdates,Events.updated,this.renderAppellation.searchResults.addSearchResults);
+          this.listenTo(this.collections.twitter,
+                        Events.updated,
+                        this._fireUpdate);
+          this.listenTo(this.collections.instagram,
+                        Events.updated,
+                        this._fireUpdate);
         },
-
         collections : {
           twitter   : new TwitterUpdates(),
           instagram : new InstagramUpdates()
         },
-
         state : {
           collectionsUpdate : 0,
           COLLECTION_COUNT : 2
         },
-
         _fireUpdate : function(){
           if(this.collectionsUpdate === this.COLLECTION_COUNT){
             this.add([
@@ -58,15 +59,12 @@
             this.trigger(Events.updated);
           }
         },
-
         model: Update,
-
         fetch : function(){
           _.each(this.collections,function(){
             debugger;
           });
         }
-
       });
 
       return defaultCollection;

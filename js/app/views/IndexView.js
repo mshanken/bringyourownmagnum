@@ -10,7 +10,7 @@
     'backbone',
     'vm',
     'events',
-    'collections/updates',
+    'collections/Updates',
     'text!templates/IndexView.html'
     ], function($,_,Backbone,vm,Events,Updates,ViewTemplate){
       var IndexView = Backbone.View.extend({

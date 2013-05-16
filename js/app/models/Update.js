@@ -1,4 +1,4 @@
-// app/js/models/update.js
+// app/js/models/Update.js
 //
 // General representation of an application update
 

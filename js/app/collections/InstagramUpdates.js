@@ -15,7 +15,6 @@
 
       var defaultCollection  = Backbone.Collection.extend({
         initialize: function () {
-          this.listenTo(this.collections.twitterUpdates,Events.updated,this.renderAppellation.searchResults.addSearchResults);
         },
         model: Update
       });
@@ -24,4 +23,3 @@
 
     });
 }());
-
