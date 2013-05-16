@@ -18,10 +18,10 @@
       var defaultCollection  = Backbone.Collection.extend({
         initialize: function () {
           this.listenTo(this.collections.twitter,
-                        Events.updated,
+                        "reset",
                         this._fireUpdate);
           this.listenTo(this.collections.instagram,
-                        Events.updated,
+                        "reset",
                         this._fireUpdate);
         },
         collections : {
@@ -33,37 +33,28 @@
           COLLECTION_COUNT : 2
         },
         _fireUpdate : function(){
-          if(this.collectionsUpdate === this.COLLECTION_COUNT){
-            this.add([
-              {
-                username: "Johnny",
-                data_provider : "twitter"
-              },  
-              {
-                username: "Jimmy",
-                data_provider : "instagram"
-              },  
-              {
-                username: "Johnny",
-                data_provider : "twitter"
-              },  
-              {
-                username: "Jimmy",
-                data_provider : "instagram"
-              },  
-              {
-                username: "Johnny",
-                data_provider : "twitter"
-              }
-            ]);
-            this.trigger(Events.updated);
+          //debugger;
+          var updatesCtx = this;
+          this.state.collectionsUpdate += 1;
+          if(this.state.collectionsUpdate >= this.state.COLLECTION_COUNT){
+            this.collections.twitter.each(function(){         // Unable to use .call
+                                                              // due to
+                                                              // restrictions on
+                                                              // bb.js' eval ctx's
+              updatesCtx.add(updatesCtx.collections.twitter.pop());
+            });
+            this.collections.instagram.each(function(){         // Unable to use .call
+                                                              // due to
+                                                              // restrictions on
+                                                              // bb.js' eval ctx's
+              updatesCtx.add(updatesCtx.collections.instagram.pop());
+            });
+            this.trigger("reset");
           }
         },
-        model: Update,
         fetch : function(){
-          _.each(this.collections,function(){
-            debugger;
-          });
+          this.collections.twitter.fetch({dataType:"jsonp",reset:true});
+          this.collections.instagram.fetch({dataType:"jsonp",reset:true});
         }
       });
 

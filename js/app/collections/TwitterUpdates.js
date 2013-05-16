@@ -1,7 +1,5 @@
 // app/js/collections/TwitterUpdates.js
 
-// http://search.twitter.com/search.json?q=%23swag%20pic.twitter.com&rpp=5&include_entities=true&result_type=mixed
-
 (function(){
 
   "use strict";
@@ -10,15 +8,17 @@
     'backbone',
     'jquery',
     'underscore',
-    '../models/Update',
+    '../models/TwitterUpdate',
     'config',
     'events'
-    ], function(Backbone, $, _, Update, config, Events){
+    ], function(Backbone, $, _, TwitterUpdate, config, Events){
 
       var defaultCollection  = Backbone.Collection.extend({
-        initialize: function () {
+        model: TwitterUpdate,
+        parse : function(jsonData){
+          return jsonData.results;
         },
-        model: Update
+        url : config.dataProviders.twitter.url.replace(config.searchToken,config.hashTag)
       });
 
       return defaultCollection;

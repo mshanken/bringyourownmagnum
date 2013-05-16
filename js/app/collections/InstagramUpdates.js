@@ -8,15 +8,27 @@
     'backbone',
     'jquery',
     'underscore',
-    '../models/Update',
+    '../models/InstagramUpdate',
     'config',
     'events'
-    ], function(Backbone, $, _, Update, config, Events){
+    ], function(Backbone, $, _, InstagramUpdate, config, Events){
 
       var defaultCollection  = Backbone.Collection.extend({
         initialize: function () {
+          this.on("reset",function(){
+            while(this.length > this.state.MAX_LENGTH){
+              this.pop();
+            }
+          });
         },
-        model: Update
+        state : {
+          MAX_LENGTH : 3
+        },
+        model: InstagramUpdate,
+        parse : function(jsonData){
+          return jsonData.data;
+        },
+        url : config.dataProviders.instagram.url.replace(config.searchToken,config.hashTag)
       });
 
       return defaultCollection;

@@ -24,7 +24,7 @@
         initialize: function(){
           this.render();
           this.collections.updates = new Updates();
-          this.listenTo(this.collections.updates,Events.updated, this.transitionUpdates);
+          this.listenTo(this.collections.updates,"reset", this.transitionUpdates);
           this.collections.updates.fetch();
         },
         render: function(){
@@ -34,9 +34,10 @@
           $(this.els.updateContainerParent).html('');
         },
         transitionUpdates : function(){
+          //debugger;
           var indexCtx = this;
           this.clearUpdateContainer();
-          this.collections.updates.each(function(update){
+          _.each(this.collections.updates.shuffle(), function(update){
             $(this.els.updateContainerParent).append(update.render());
           },this);
           $(this.els.nextUpdates).each(function(ndx, el){
@@ -46,8 +47,7 @@
           });
         },
         addUpdate : function(){
-          window.addUpdate = this;
-          var update = this.collections.updates.pop();
+          var update = this.collections.updates.collections.twitter.pop();
           $(this.els.updateContainerParent).append(update.render());
           $("li#"+update.cid).fadeIn();
         }
