@@ -1,8 +1,3 @@
-General TODO:
-============
-
-* Gather requirements (browsers mainly)
-
 Version TODO:
 ============
 
@@ -14,8 +9,8 @@ __0.1__
 
 __0.2__
 
-- Configure keys and routes
-- Inform app of basic animations
+* Configure keys and routes
+* Inform app of basic animations
 
 __0.3__
 
