@@ -17,41 +17,54 @@
 
       var defaultCollection  = Backbone.Collection.extend({
 
-        url: config.base_url_path + 'api/container',
-
         initialize: function () {
+          this.listenTo(this.collections.twitterUpdates,Events.updated,this.renderAppellation.searchResults.addSearchResults);
         },
 
-        model: Update ,
+        collections : {
+          twitter   : new TwitterUpdates(),
+          instagram : new InstagramUpdates()
+        },
+
+        state : {
+          collectionsUpdate : 0,
+          COLLECTION_COUNT : 2
+        },
+
+        _fireUpdate : function(){
+          if(this.collectionsUpdate === this.COLLECTION_COUNT){
+            this.add([
+              {
+                username: "Johnny",
+                data_provider : "twitter"
+              },  
+              {
+                username: "Jimmy",
+                data_provider : "instagram"
+              },  
+              {
+                username: "Johnny",
+                data_provider : "twitter"
+              },  
+              {
+                username: "Jimmy",
+                data_provider : "instagram"
+              },  
+              {
+                username: "Johnny",
+                data_provider : "twitter"
+              }
+            ]);
+            this.trigger(Events.updated);
+          }
+        },
+
+        model: Update,
 
         fetch : function(){
-          console.log("Update the updates collection");
-          
-          this.add([
-            {
-              username: "Johnny",
-              data_provider : "twitter"
-            },  
-            {
-              username: "Jimmy",
-              data_provider : "instagram"
-            },  
-            {
-              username: "Johnny",
-              data_provider : "twitter"
-            },  
-            {
-              username: "Jimmy",
-              data_provider : "instagram"
-            },  
-            {
-              username: "Johnny",
-              data_provider : "twitter"
-            },  
-          ]);
-
-          this.trigger(Events.updated);
-
+          _.each(this.collections,function(){
+            debugger;
+          });
         }
 
       });
