@@ -21,23 +21,32 @@
           loadingPlaceholder : "#loadingPlaceholder"
         },
         checkScroll : function(){
-          console.log("We been scrolled, yo");
+          var currentPosition = $(document).scrollTop()+$(window).height(),
+              documentHeight = $(document).height();
+          if(
+              (currentPosition  >= documentHeight - this.constants.INFINISCROLL_PADDING) &&
+              this.collections.updates.state.isLoading === false
+            ){
+            this.collections.updates.state.isLoading = true;
+            this.collections.updates.fetch();
+          }
         },
         constants :{
           LOADING_TRANSITION_LENGTH : 300,
-          NEW_IMAGE_TRANSITION_LENGTH: 500
+          NEW_IMAGE_TRANSITION_LENGTH: 500,
+          INFINISCROLL_PADDING : 200
         },
         collections : {},
         initialize: function(){
           this.render();
           this.collections.updates = new Updates();
-          $(window).on("scroll",this.checkScroll);
+          $(window).on("scroll",this.checkScroll.bind(this));
           this.listenTo(this.collections.updates,"reset", this.transitionUpdates);
           this.listenTo(this.collections.updates,"loadToggle", this.toggleLoading);
           this.collections.updates.fetch();
         },
         toggleLoading : function(){
-          if(this.collections.updates.state.loading === true){
+          if(this.collections.updates.state.isLoading === true){
            $(this.els.loadingPlaceholder).fadeIn(this.constants.LOADING_TRANSITION_LENGTH);
           }else{
            $(this.els.loadingPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
@@ -59,7 +68,6 @@
               itemSelector: '.masonryTile',
               columnWidth:240
             }).imagesLoaded(function(){
-              console.log("loaded");
               $container.masonry("reload");
               $container.children().each(function(ndx,el){
                 $(el).fadeIn(500);

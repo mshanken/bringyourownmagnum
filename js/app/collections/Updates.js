@@ -31,7 +31,7 @@
         state : {
           collectionsUpdate : 0,
           COLLECTION_COUNT : 1,
-          loading: true
+          isLoading: true
         },
         _fireUpdate : function(){
           var updatesCtx = this;
@@ -49,7 +49,7 @@
             //                                                  // bb.js' eval ctx's
             //  updatesCtx.add(updatesCtx.collections.instagram.pop());
             //});
-            this.state.loading = false;
+            this.state.isLoading = false;
             this.trigger("loadToggle");
             this.trigger("reset");
           }
