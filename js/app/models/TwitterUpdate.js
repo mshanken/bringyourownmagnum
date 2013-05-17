@@ -19,6 +19,7 @@
         data_provider: "twitter"
       },
       render : function(){
+
         var attr = this.attributes;
         attr.cid = this.cid;
         attr.url = "";
