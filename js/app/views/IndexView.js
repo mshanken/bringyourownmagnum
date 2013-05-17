@@ -44,16 +44,25 @@
           this.$el.append(ModalTemplate);
         },
         transitionUpdates : function(){
-          var indexCtx = this;
+
           _.each(this.collections.updates.shuffle(), function(update){
             $(this.els.updates).append(update.render());
           },this);
-          $(this.els.nextUpdates).each(function(ndx, el){
-            $(el).fadeIn(this.constants.NEW_IMAGE_TRANSITION_LENGTH);
+        $(document).ready(function() {
+
+          $(this.els.updates).masonry({
+            itemSelector: '.masonryTile',
+            columnWidth:240
+          }).imagesLoaded(function(){
+            console.log("loaded");
+            $(this.els.updates).masonry("reload");
+            $(this.els.updates).children().each(function(ndx,el){
+              $(el).fadeIn(500);
+            });
           });
-          $(this.els.updates).children().each(function(ndx,el){
-            $(el).fadeIn(this.constants.NEW_IMAGE_TRANSITION_LENGTH);
-          }.bind(this));
+
+        });
+
         },
         addUpdate : function(){
           var update = this.collections.updates.collections.twitter.pop();

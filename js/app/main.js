@@ -38,15 +38,8 @@
     'backbone',
     'router',
     'vm',
-    'jquery',
+    'jquery'
     ], function(_, Backbone, Router, Vm, $){
-      // Boot masonry
-      $('.thumbnails').masonry({
-        itemSelector: '.masonryTile',
-        columnWidth:  '240px',
-        isAnimated:   true
-      });
-
       Router.initialize();  // The router now has a copy of all main appview
   });
 

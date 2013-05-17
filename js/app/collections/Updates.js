@@ -50,7 +50,7 @@
             //  updatesCtx.add(updatesCtx.collections.instagram.pop());
             //});
             this.state.loading = false;
-            //this.trigger("loadToggle");
+            this.trigger("loadToggle");
             this.trigger("reset");
           }
         },
