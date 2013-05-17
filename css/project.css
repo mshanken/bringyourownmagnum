@@ -2,6 +2,7 @@
 body{
   background-color: #4f4b48;
   background-image: url("../img/leather.png");
+
   color: #fff;
   font-family: 'ProximaNova', sans-serif;
   font-size: 16px;
@@ -13,53 +14,81 @@ h1{
   font-family: 'liberator', serif;
   font-weight: 400;
 }
-h3{
-  font-family: 'liberator',serif;
-  font-size: 36px;
+h2, h3{
   font-weight: 400;
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 }
 p{
   color: #ccc;
+}
+/* ========================================================= title ===*/
+.title{
+  background-color: #fff;
+  padding: 60px 0 40px;
+}
+.title img{
+  display: block;
+  margin: 0 auto;
+}
+.title .porsche{
+  margin: 6px auto 20px;
 }
 /* ========================================================= Intro ===*/
 .intro{
   border-bottom: 1px solid #000000;
   box-shadow: 0 -1px 0 #333333 inset;
-  padding: 20px 0 5px;
+  padding: 2px 0 0;
 }
 .intro img{
-  display: block;
-  margin: 15px auto;
-}
-.intro .span9{
-  background-color: rgba(0,0,0,0.3);
-  border-radius: 4px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
-  margin-top: 10px;
-  padding: 35px 35px 20px;
-}
-.intro{
-  text-align: center;
-}
-.intro h1{
-  font-size: 54px;
-  font-style: italic;
-  margin: 0 0 20px;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.7), 0 2px 2px rgba(0,0,0,0.6), 0 6px 3px rgba(0,0,0,0.5);
-  text-transform: uppercase;
 }
 .intro p{
-  font-size: 18px;
+  font-size: 16px;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
-}
-.intro .porsche{
-  max-width: 100px;
 }
 .intro .stitch{
   background-image: url("../img/stitch.png");
+  opacity: 0.7;
   height: 8px;
   margin: 20px 0 0;
+}
+.intro .stitch-top{
+  background-image: url("../img/stitch.png");
+  opacity: 0.7;
+  height: 8px;
+  margin: 0 0 20px;
+}
+.intro .details{
+
+}
+.intro .details .span3 h4{
+  font-family: 'ProximaNovaBold', sans-serif;
+  font-weight: 400;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.intro .details .span3 p{
+  font-family: 'ProximaNovaBold', sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  margin: 0;
+}
+.intro .details .span9{
+
+}
+.social{
+  background-image: url("../img/noise2.png");
+  border-top: 2px solid #000000;
+    margin: 2px 0 0;
+    padding: 20px 0;
+}
+.social{
+
+}
+.social img{
+  font-size: 0;
+}
+.social .buttons{
+  text-align: center;
 }
 /* ========================================================= Photos ===*/
 .photos{
@@ -124,13 +153,44 @@ a.thumbnail:hover, a.thumbnail:focus {
   padding: 5px 0 40px;
 }
 .rules h3{
-  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6), 0 1px 5px rgba(0, 0, 0, 0.6);
 }
 .rules p{
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
 }
 .rules .stitch{
   background-image: url("../img/stitch.png");
+  opacity: 0.7;
   height: 8px;
   margin: 0 0 40px;
+}
+/* ========================================================= Rules ===*/
+.loading{
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 4px;
+}
+/* ========================================================= Adaptive ===*/
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  .container{
+    padding: 0 20px;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .container{
+    padding: 0 20px;
+  }
+
 }

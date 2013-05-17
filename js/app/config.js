@@ -5,11 +5,11 @@
 (function(){
 
   "use strict";
-  
+
   define(function(){
-  
+
     return {
-      hashTag: "swag",
+      hashTag: "sunset",
       searchToken : "<<SEARCH_TOKEN>>",
       dataProviders : {
         twitter : {
@@ -20,7 +20,7 @@
         }
       }
     };
-  
+
   });
 
 }());
