@@ -20,12 +20,14 @@
         nextPage:undefined,
         model: TwitterUpdate,
         parse : function(jsonData){
-          if(typeof jsonData.nextPage !== "undefined"){
-            this.nextPage = jsonData.nextPage;
+          debugger;
+          if(typeof jsonData.next_page !== "undefined"){
+            this.nextPage = jsonData.next_page;
           }
           return jsonData.results;
         },
         fetchNext : function(fetchArgs){
+          debugger;
           if(typeof this.nextPage !== "undefined"){
             this.url = config.dataProviders.twitter.domain + this.nextPage;
           }

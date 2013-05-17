@@ -43,6 +43,9 @@
                                                               // bb.js' eval ctx's
               updatesCtx.add(updatesCtx.collections.twitter.pop());
             });
+            this.collections.twitter.reset(undefined,{silent:true}); // CLEAR THE COLLECTION, DONT
+            // FIRE A RESET EVENT
+
             //this.collections.instagram.each(function(){         // Unable to use .call
             //                                                  // due to
             //                                                  // restrictions on
@@ -51,7 +54,7 @@
             //});
             this.state.isLoading = false;
             this.trigger("loadToggle");
-            this.trigger("reset");
+            this.trigger("clear");
           }
         },
         fetch : function(){

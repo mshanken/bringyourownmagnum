@@ -38,10 +38,9 @@
         },
         collections : {},
         initialize: function(){
-          this.render();
           this.collections.updates = new Updates();
-          $(window).on("scroll",this.checkScroll.bind(this));
-          this.listenTo(this.collections.updates,"reset", this.transitionUpdates);
+          $(window).on("scroll",this.checkScroll.bind(this)); // infiniscroll
+          this.listenTo(this.collections.updates,"clear", this.transitionUpdates);
           this.listenTo(this.collections.updates,"loadToggle", this.toggleLoading);
           this.collections.updates.fetch();
         },
@@ -51,10 +50,6 @@
           }else{
            $(this.els.loadingPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
           }
-        },
-        render: function(){
-          //this.$el.append(ViewTemplate);
-          //this.$el.append(ModalTemplate);
         },
         transitionUpdates : function(){
 
@@ -91,12 +86,7 @@
                 });
               }
             );
-
-        },
-        addUpdate : function(){
-          var update = this.collections.updates.collections.twitter.pop();
-          $(this.els.updateContainerParent).append(update.render());
-          $("li#"+update.cid).fadeIn();
+            this.collections.updates.reset();
         }
       });
       return IndexView;
