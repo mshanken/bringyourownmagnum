@@ -9,7 +9,7 @@
   define(function(){
   
     return {
-      hashTag: "swag",
+      hashTag: "cat",
       searchToken : "<<SEARCH_TOKEN>>",
       dataProviders : {
         twitter : {
