@@ -9,7 +9,7 @@
   require.config({
   
     paths: {
-      jquery: '../libs/jquery/jquery-1.7.1.min',
+      jquery: '../libs/jquery/jquery-1.7.1',
       plugins: '../libs/plugins/plugins-min',
       underscore: '../libs/underscore/underscore', 
       backbone: '../libs/backbone/backbone',
@@ -41,6 +41,12 @@
     'jquery',
     'TweenLite'
     ], function(_, Backbone, Router, Vm, $,TweenLite){
+      // Boot masonry
+      $('.thumbnails').masonry({
+        itemSelector: '.masonryTile',
+        columnWidth:  '240px'
+      });
+
       Router.initialize();  // The router now has a copy of all main appview
   });
 
