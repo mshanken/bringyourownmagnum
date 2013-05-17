@@ -1,6 +1,7 @@
 /* ========================================================= Main ===*/
 body{
-  background-color: #bbbab5;
+  background-color: #4f4b48;
+  background-image: url("../img/leather.png");
   color: #fff;
   font-family: 'ProximaNova', sans-serif;
   font-size: 16px;
@@ -14,19 +15,18 @@ h1{
 }
 h3{
   font-family: 'liberator',serif;
-    font-size: 36px;
-    font-weight: 400;
-    margin: 0 0 10px;
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0 0 10px;
 }
 p{
   color: #ccc;
 }
 /* ========================================================= Intro ===*/
 .intro{
-  background-image: url("../img/leather.png");
   border-bottom: 1px solid #000000;
-    box-shadow: 0 -1px 0 #333333 inset;
-    padding: 20px 0 5px;
+  box-shadow: 0 -1px 0 #333333 inset;
+  padding: 20px 0 5px;
 }
 .intro img{
   display: block;
@@ -34,10 +34,10 @@ p{
 }
 .intro .span9{
   background-color: rgba(0,0,0,0.3);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
   border-radius: 4px;
-margin-top: 10px;
-    padding: 35px 35px 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+  padding: 35px 35px 20px;
 }
 .intro{
   text-align: center;
@@ -46,8 +46,8 @@ margin-top: 10px;
   font-size: 54px;
   font-style: italic;
   margin: 0 0 20px;
-  text-transform: uppercase;
   text-shadow: 0 1px 1px rgba(0,0,0,0.7), 0 2px 2px rgba(0,0,0,0.6), 0 6px 3px rgba(0,0,0,0.5);
+  text-transform: uppercase;
 }
 .intro p{
   font-size: 18px;
@@ -58,8 +58,8 @@ margin-top: 10px;
 }
 .intro .stitch{
   background-image: url("../img/stitch.png");
-    height: 8px;
-    margin: 20px 0 0;
+  height: 8px;
+  margin: 20px 0 0;
 }
 /* ========================================================= Photos ===*/
 .photos{
@@ -119,7 +119,6 @@ a.thumbnail:hover, a.thumbnail:focus {
 }
 /* ========================================================= Rules ===*/
 .rules{
-  background-image: url("../img/leather.png");
   border-top: 1px solid #000;
   box-shadow: 0 1px 0 #333333 inset;
   padding: 5px 0 40px;
@@ -132,6 +131,6 @@ a.thumbnail:hover, a.thumbnail:focus {
 }
 .rules .stitch{
   background-image: url("../img/stitch.png");
-    height: 8px;
-    margin: 0 0 40px;
+  height: 8px;
+  margin: 0 0 40px;
 }
