@@ -33,9 +33,12 @@
         console.log("you dun messed up, kid...'Merrica!");
       });
   
+      /*
       router.on('route', function (argOne, argTwo) {
         _.each(Vm.views,Vm.destroy);
       });
+
+      */
 
       Backbone.history.start();
     };
