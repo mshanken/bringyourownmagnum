@@ -163,7 +163,7 @@ a.thumbnail:hover, a.thumbnail:focus {
   height: 8px;
   margin: 0 0 40px;
 }
-/* ========================================================= Rules ===*/
+/* ========================================================= Loading ===*/
 .loading{
   background-color: rgba(0,0,0,0.7);
   border-radius: 4px;
