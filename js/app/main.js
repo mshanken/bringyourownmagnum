@@ -40,7 +40,9 @@
     'vm',
     'jquery'
     ], function(_, Backbone, Router, Vm, $){
-      Router.initialize();  // The router now has a copy of all main appview
+      $(document).ready(function() {
+        Router.initialize();  // The router now has a copy of all main appview
+      });
   });
 
 }());
