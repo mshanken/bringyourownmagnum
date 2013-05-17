@@ -47,8 +47,6 @@
         columnWidth:  '240px'
       });
 
-      debugger;
-
       Router.initialize();  // The router now has a copy of all main appview
   });
 

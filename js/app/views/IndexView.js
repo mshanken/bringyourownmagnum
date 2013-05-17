@@ -11,13 +11,12 @@
     'vm',
     'events',
     'collections/Updates',
-    'text!templates/IndexView.html'
-    ], function($,_,Backbone,vm,Events,Updates,ViewTemplate){
+    'text!templates/IndexView.html',
+    'text!templates/Modal.html'
+    ], function($,_,Backbone,vm,Events,Updates,ViewTemplate,ModalTemplate){
       var IndexView = Backbone.View.extend({
         el : "#content",
         els : {
-          currentUpdates : ".currentUpdate",
-          nextUpdates : ".nextUpdate",
           updateContainerParent : "#updates"
         },
         collections : {},
@@ -29,6 +28,7 @@
         },
         render: function(){
           this.$el.append(ViewTemplate);
+          this.$el.append(ModalTemplate);
         },
         clearUpdateContainer : function(){
           $(this.els.updateContainerParent).html('');
@@ -37,14 +37,12 @@
           //debugger;
           var indexCtx = this;
           this.clearUpdateContainer();
-          _.each(this.collections.updates.shuffle(), function(update){
-            $(this.els.updateContainerParent).append(update.render());
-          },this);
-          $(this.els.nextUpdates).each(function(ndx, el){
-            $(el).fadeIn();
-            //$(el).removeClass(indexCtx.els.nextUpdates).addClass(indexCtx.els.currentUpdates).fadeOut();
-            //indexCtx.addUpdate();
-          });
+          //_.each(this.collections.updates.shuffle(), function(update){
+          //  $(this.els.updateContainerParent).append(update.render());
+          //},this);
+          //$(this.els.nextUpdates).each(function(ndx, el){
+          //  $(el).fadeIn();
+          //});
         },
         addUpdate : function(){
           var update = this.collections.updates.collections.twitter.pop();
