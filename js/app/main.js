@@ -9,7 +9,7 @@
   require.config({
   
     paths: {
-      jquery: '../libs/jquery/jquery-1.7.1.min',
+      jquery: '../libs/jquery/jquery-1.7.1',
       plugins: '../libs/plugins/plugins-min',
       underscore: '../libs/underscore/underscore', 
       backbone: '../libs/backbone/backbone',
@@ -38,10 +38,11 @@
     'backbone',
     'router',
     'vm',
-    'jquery',
-    'TweenLite'
-    ], function(_, Backbone, Router, Vm, $,TweenLite){
-      Router.initialize();  // The router now has a copy of all main appview
+    'jquery'
+    ], function(_, Backbone, Router, Vm, $){
+      $(document).ready(function() {
+        Router.initialize();  // The router now has a copy of all main appview
+      });
   });
 
 }());

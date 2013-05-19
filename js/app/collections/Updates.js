@@ -30,10 +30,10 @@
         },
         state : {
           collectionsUpdate : 0,
-          COLLECTION_COUNT : 2
+          COLLECTION_COUNT : 1,
+          isLoading: true
         },
         _fireUpdate : function(){
-          //debugger;
           var updatesCtx = this;
           this.state.collectionsUpdate += 1;
           if(this.state.collectionsUpdate >= this.state.COLLECTION_COUNT){
@@ -43,18 +43,23 @@
                                                               // bb.js' eval ctx's
               updatesCtx.add(updatesCtx.collections.twitter.pop());
             });
-            this.collections.instagram.each(function(){         // Unable to use .call
-                                                              // due to
-                                                              // restrictions on
-                                                              // bb.js' eval ctx's
-              updatesCtx.add(updatesCtx.collections.instagram.pop());
-            });
-            this.trigger("reset");
+            this.collections.twitter.reset(undefined,{silent:true}); // CLEAR THE COLLECTION, DONT
+            // FIRE A RESET EVENT
+
+            //this.collections.instagram.each(function(){         // Unable to use .call
+            //                                                  // due to
+            //                                                  // restrictions on
+            //                                                  // bb.js' eval ctx's
+            //  updatesCtx.add(updatesCtx.collections.instagram.pop());
+            //});
+            this.state.isLoading = false;
+            this.trigger("loadToggle");
+            this.trigger("clear");
           }
         },
         fetch : function(){
-          this.collections.twitter.fetch({dataType:"jsonp",reset:true});
-          this.collections.instagram.fetch({dataType:"jsonp",reset:true});
+          this.collections.twitter.fetchNext({dataType:"jsonp",reset:true});
+          //this.collections.instagram.fetchNext({dataType:"jsonp",reset:true});
         }
       });
 

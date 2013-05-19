@@ -1,4 +1,4 @@
-<!--
+<% /*
 
   Update.html
 
@@ -9,14 +9,12 @@
   data_provider : STRING, IS IN ['twitter','instagram']
 
   TODO: Add guarding logic for data_providers. Previous attempt failed.
-
--->
-
+  */%>
 <%
 if(data_provider === "twitter"){
 %>
 
-<li id="<%= cid %>" class="span3 nextUpdate" style="display:none">
+<li id="<%= cid %>" class="masonryTile nextUpdate" style="displaye:none" >
   
 <a <% if(typeof url  !== "undefined"){ print(" href='"+url+"'");} %> class="thumbnail">
   <img <% 
@@ -42,7 +40,7 @@ if(data_provider === "twitter"){
   }else if(data_provider === "instagram"){
 %>
 
-<li id="<%= cid %>" class="span3 nextUpdate" style="display:none">
+<li id="<%= cid %>" class="masonryTile nextUpdate" style="display:none">
   
 <a <% if(typeof url  !== "undefined"){ print(" href='"+url+"'");} %> class="thumbnail">
   <img <% 

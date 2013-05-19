@@ -21,9 +21,6 @@
         username: "",
         data_provider: ""
       },
-      initialize: function(){
-        console.log("Update booted",arguments);
-      },
       render : function(){
         var attr = this.attributes;
         attr.cid = this.cid;
