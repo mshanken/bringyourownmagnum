@@ -18,7 +18,8 @@
         el : "#content",
         els : {
           updates : "ul#updates",
-          loadingPlaceholder : "#loadingPlaceholder"
+          loadingPlaceholder : "#loadingPlaceholder",
+          noResultsPlaceholder : "#noResultsPlaceholder"
         },
         checkScroll : function(){
           var currentPosition = $(document).scrollTop()+$(window).height(),
@@ -42,6 +43,7 @@
           $(window).on("scroll",this.checkScroll.bind(this)); // infiniscroll
           this.listenTo(this.collections.updates,"clear", this.transitionUpdates);
           this.listenTo(this.collections.updates,"loadToggle", this.toggleLoading);
+          this.listenTo(this.collections.updates,"noResults",this.showNoResults);
           this.collections.updates.fetch();
         },
         toggleLoading : function(){
@@ -51,9 +53,12 @@
            $(this.els.loadingPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
           }
         },
+        render : function(){
+          $(this.els.noResultsPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
+        },
         transitionUpdates : function(){
-
           var $container = $(this.els.updates);
+          //this.render();
 
           _.each(this.collections.updates.shuffle(), function(update){
             $(this.els.updates).append(update.render());
@@ -87,6 +92,9 @@
               }
             );
             this.collections.updates.reset();
+        },
+        showNoResults : function(){
+          $(this.els.noResultsPlaceholder).fadeIn(this.constants.LOADING_TRANSITION_LENGTH);
         }
       });
       return IndexView;

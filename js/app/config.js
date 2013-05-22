@@ -11,7 +11,7 @@
   define(function(){
 
     return {
-      hashTag: "porsche",
+      hashTag: "asdasdadadadadsa",
       searchToken : "<<SEARCH_TOKEN>>",
       dataProviders : {
         twitter : {

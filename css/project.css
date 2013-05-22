@@ -198,3 +198,14 @@ a.thumbnail:hover, a.thumbnail:focus {
   }
 
 }
+
+#loadingPlaceholder {
+  margin: auto;
+  width:85px;
+}
+
+#noResultsPlaceholder {
+  display:none;
+  margin: auto;
+  width:85px;
+}

@@ -23,6 +23,15 @@
           this.listenTo(this.collections.instagram,
                         "reset",
                         this._fireUpdate);
+          this.listenTo(this.collections.twitter,
+                        "noResults",
+                        this._noResults);
+        },
+        _noResults : function(evt){
+          if(this.collections.twitter.state.noResults === true){
+             //this.collections.instagram.state.noResults === true){
+            this.trigger("noResults");
+          }
         },
         collections : {
           twitter   : new TwitterUpdates(),
@@ -37,21 +46,11 @@
           var updatesCtx = this;
           this.state.collectionsUpdate += 1;
           if(this.state.collectionsUpdate >= this.state.COLLECTION_COUNT){
-            this.collections.twitter.each(function(){         // Unable to use .call
-                                                              // due to
-                                                              // restrictions on
-                                                              // bb.js' eval ctx's
+            this.collections.twitter.each(function(){
               updatesCtx.add(updatesCtx.collections.twitter.pop());
             });
-            this.collections.twitter.reset(undefined,{silent:true}); // CLEAR THE COLLECTION, DONT
-            // FIRE A RESET EVENT
 
-            //this.collections.instagram.each(function(){         // Unable to use .call
-            //                                                  // due to
-            //                                                  // restrictions on
-            //                                                  // bb.js' eval ctx's
-            //  updatesCtx.add(updatesCtx.collections.instagram.pop());
-            //});
+            this.collections.twitter.reset(undefined,{silent:true});
             this.state.isLoading = false;
             this.trigger("loadToggle");
             this.trigger("clear");

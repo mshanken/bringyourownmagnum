@@ -16,11 +16,18 @@
       var defaultCollection  = Backbone.Collection.extend({
         initialize : function(){
         },
+        state : {
+          noResults : false
+        },
         nextPage:undefined,
         model: TwitterUpdate,
         parse : function(jsonData){
           if(typeof jsonData.next_page !== "undefined"){
+            this.state.noResults = false;
             this.nextPage = jsonData.next_page;
+          }else{
+            this.state.noResults = true;
+            this.trigger("noResults");
           }
           return jsonData.results;
         },
