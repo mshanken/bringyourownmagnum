@@ -43,7 +43,7 @@
           $(window).on("scroll",this.checkScroll.bind(this)); // infiniscroll
           this.listenTo(this.collections.updates,"clear", this.transitionUpdates);
           this.listenTo(this.collections.updates,"loadToggle", this.toggleLoading);
-          this.listenTo(this.collections.updates,"noResults",this.showNoResults);
+          this.listenTo(this.collections.updates,"resultsToggle",this.toggleResults);
           this.collections.updates.fetch();
         },
         toggleLoading : function(){
@@ -53,8 +53,14 @@
            $(this.els.loadingPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
           }
         },
+        toggleResults : function(){
+          if(this.collections.updates.state.noResults === true){
+            $(this.els.noResultsPlaceholder).fadeIn(this.constants.LOADING_TRANSITION_LENGTH); 
+          }else{
+            $(this.els.noResultsPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
+          }
+        },
         render : function(){
-          $(this.els.noResultsPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
         },
         transitionUpdates : function(){
           var $container = $(this.els.updates);
@@ -92,9 +98,6 @@
               }
             );
             this.collections.updates.reset();
-        },
-        showNoResults : function(){
-          $(this.els.noResultsPlaceholder).fadeIn(this.constants.LOADING_TRANSITION_LENGTH);
         }
       });
       return IndexView;

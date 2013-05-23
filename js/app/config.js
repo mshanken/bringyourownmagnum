@@ -11,7 +11,7 @@
   define(function(){
 
     return {
-      hashTag: "asdasdadadadadsa",
+      hashTag: "asd",
       searchToken : "<<SEARCH_TOKEN>>",
       dataProviders : {
         twitter : {

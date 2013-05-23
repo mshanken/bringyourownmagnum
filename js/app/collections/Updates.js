@@ -24,13 +24,17 @@
                         "reset",
                         this._fireUpdate);
           this.listenTo(this.collections.twitter,
-                        "noResults",
+                        "resultsToggle",
                         this._noResults);
         },
         _noResults : function(evt){
           if(this.collections.twitter.state.noResults === true){
              //this.collections.instagram.state.noResults === true){
-            this.trigger("noResults");
+            this.state.isLoading = false;
+            this.state.noResults = true;
+            this.trigger("resultsToggle");
+            this.trigger("loadToggle");
+            //}
           }
         },
         collections : {
@@ -40,7 +44,8 @@
         state : {
           collectionsUpdate : 0,
           COLLECTION_COUNT : 1,
-          isLoading: true
+          isLoading: true,
+          noResults : false
         },
         _fireUpdate : function(){
           var updatesCtx = this;
@@ -49,7 +54,6 @@
             this.collections.twitter.each(function(){
               updatesCtx.add(updatesCtx.collections.twitter.pop());
             });
-
             this.collections.twitter.reset(undefined,{silent:true});
             this.state.isLoading = false;
             this.trigger("loadToggle");
@@ -57,6 +61,11 @@
           }
         },
         fetch : function(){
+          this.state.isLoading = true;
+          this.state.noResults = false;
+          this.trigger("loadToggle");
+          this.trigger("resultsToggle");
+
           this.collections.twitter.fetchNext({dataType:"jsonp",reset:true});
           //this.collections.instagram.fetchNext({dataType:"jsonp",reset:true});
         }
