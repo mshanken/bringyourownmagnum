@@ -66,7 +66,7 @@
           var $container = $(this.els.updates);
           //this.render();
 
-          _.each(this.collections.updates.shuffle(), function(update){
+          this.collections.updates.each(function(update){
             $(this.els.updates).append(update.render());
           },this);
 

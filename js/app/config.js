@@ -11,12 +11,12 @@
   define(function(){
 
     return {
-      hashTag: "asd",
+      hashTag: "porsche",
       searchToken : "<<SEARCH_TOKEN>>",
       dataProviders : {
         twitter : {
           domain  : "http://search.twitter.com/search.json",
-          url     : "http://search.twitter.com/search.json?q=%23<<SEARCH_TOKEN>>%20pic.twitter.com%20exclude:retweets%20exclude:replies&include_entities=true&count=100&until=2013-09-01" 
+          url     : "http://search.twitter.com/search.json?q=<<SEARCH_TOKEN>>%20pic.twitter.com%20exclude:retweets%20exclude:replies&include_entities=true&count=100&until=2013-05-29" 
         },
         instagram : {
           url: "https://api.instagram.com/v1/tags/<<SEARCH_TOKEN>>/media/recent?client_id=777ace9cb20b46ec9d81ec11ae5cad0d"

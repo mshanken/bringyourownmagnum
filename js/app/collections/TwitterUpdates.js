@@ -45,7 +45,10 @@
             //this.trigger("loadToggle");
           }
         },
-        url : config.dataProviders.twitter.url.replace(config.searchToken,config.hashTag)
+        url : config.dataProviders.twitter.url.replace(config.searchToken,config.hashTag),
+        comparator : function(tweet){
+          return tweet.get("id");
+        }
       });
 
       return defaultCollection;
