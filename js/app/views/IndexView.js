@@ -64,7 +64,6 @@
         },
         transitionUpdates : function(){
           var $container = $(this.els.updates);
-          //this.render();
 
           this.collections.updates.each(function(update){
             $(this.els.updates).append(update.render());
@@ -72,7 +71,13 @@
 
             $container.masonry({
               itemSelector: '.masonryTile',
-              columnWidth:240
+              isAnimated : false,
+              columnSize: 300
+              /*animations : {
+                duration: 700,
+                easing : 'swing',
+                queue: true
+              }*/
             }).imagesLoaded(function(){
               $container.masonry("reload");
               $container.children().each(function(ndx,el){
@@ -80,23 +85,6 @@
               });
             });
 
-            $container.infinitescroll({
-              navSelector  : '#page-nav',    // selector for the paged navigation 
-              nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
-              itemSelector : '.masonryTile',     // selector for all items you'll retrieve
-              loading: {
-                  finishedMsg: 'No more pages to load.',
-                  img: 'img/loading.gif'
-              }
-            },
-              function(newElements){
-                var $newElems = $(newElements).css({opacity:0});
-                $newElems.imagesLoaded(function(){
-                  $newElems.animate({opacity:1});
-                  $container.masonry('appended',$newElems,true);
-                });
-              }
-            );
             this.collections.updates.reset();
         }
       });
