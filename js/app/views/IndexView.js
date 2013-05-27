@@ -28,7 +28,6 @@
               (currentPosition  >= documentHeight - this.constants.INFINISCROLL_PADDING) &&
               this.collections.updates.state.isLoading === false
             ){
-            this.collections.updates.state.isLoading = true;
             this.collections.updates.fetch();
           }
         },
@@ -60,14 +59,15 @@
             $(this.els.noResultsPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
           }
         },
-        render : function(){
-        },
         transitionUpdates : function(){
           var $container = $(this.els.updates);
 
-          this.collections.updates.each(function(update){
-            $(this.els.updates).append(update.render());
-          },this);
+          _.each(this.collections.updates.shuffle(),function(update){
+            $(this.els.updates).append(update.render());},this);
+
+          //this.collections.updates.each(function(update){
+          //  $(this.els.updates).append(update.render());
+          //},this);
 
             $container.masonry({
               itemSelector: '.masonryTile',
@@ -84,6 +84,8 @@
                 $(el).fadeIn(500);
               });
             });
+
+            this.collections.updates.state.isLoading = false;
 
             this.collections.updates.reset();
         }

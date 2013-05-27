@@ -12,6 +12,7 @@
 
     return {
       hashTag: "porsche",
+      //hashTag: "byomws2013",
       searchToken : "<<SEARCH_TOKEN>>",
       dataProviders : {
         twitter : {

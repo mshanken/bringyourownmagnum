@@ -42,7 +42,6 @@
             this.state.noResults = true;
             this.trigger("resultsToggle");
             this.trigger("reset");
-            //this.trigger("loadToggle");
           }
         },
         url : config.dataProviders.twitter.url.replace(config.searchToken,config.hashTag),

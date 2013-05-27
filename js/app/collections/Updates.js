@@ -23,18 +23,19 @@
           this.listenTo(this.collections.instagram,
                         "reset",
                         this._fireUpdate);
+          this.listenTo(this.collections.instagram,
+                        "resultsToggle",
+                        this._noResults);
           this.listenTo(this.collections.twitter,
                         "resultsToggle",
                         this._noResults);
         },
         _noResults : function(evt){
-          if(this.collections.twitter.state.noResults === true){
-             //this.collections.instagram.state.noResults === true){
-            this.state.isLoading = false;
-            this.state.noResults = true;
-            this.trigger("resultsToggle");
-            this.trigger("loadToggle");
-            //}
+          if(this.collections.twitter.state.noResults === true && this.collections.instagram.state.noResults === true){
+           this.state.isLoading = false;
+           this.state.noResults = true;
+           this.trigger("resultsToggle");
+           this.trigger("loadToggle");
           }
         },
         collections : {
@@ -43,7 +44,7 @@
         },
         state : {
           collectionsUpdate : 0,
-          COLLECTION_COUNT : 1,
+          COLLECTION_COUNT : 2,
           isLoading: true,
           noResults : false
         },
@@ -51,10 +52,20 @@
           var updatesCtx = this;
           this.state.collectionsUpdate += 1;
           if(this.state.collectionsUpdate >= this.state.COLLECTION_COUNT){
+
+            // Instagram
+            this.collections.instagram.each(function(){
+              updatesCtx.add(updatesCtx.collections.instagram.pop());
+            });
+            this.collections.instagram.reset(undefined,{silent:true});
+
+            // Twitter
             this.collections.twitter.each(function(){
               updatesCtx.add(updatesCtx.collections.twitter.pop());
             });
             this.collections.twitter.reset(undefined,{silent:true});
+            
+            this.state.collectionsUpdate = 0;
             this.state.isLoading = false;
             this.trigger("loadToggle");
             this.trigger("clear");
@@ -67,10 +78,9 @@
           this.trigger("resultsToggle");
 
           this.collections.twitter.fetchNext({dataType:"jsonp",reset:true});
-          //this.collections.instagram.fetchNext({dataType:"jsonp",reset:true});
+          this.collections.instagram.fetchNext({dataType:"jsonp",reset:true});
         }
       });
-
       return defaultCollection;
 
     });
