@@ -6,7 +6,9 @@ The Website for Bring Your Magnum
 Version : 0.2
 
 Dev URL:            http://ws2013byom.s3-website-us-east-1.amazonaws.com/
-Deployment script:  s3cmd put --recursive ~/Code/bringyourownmagnum/* s3://ws2013byom 
+Deployment URL:     http://byom.winespectator.com
+Deployment script:  s3cmd put --recursive ~/Code/bringyourownmagnum/*
+s3://byom.winespectator.com
 Bucket policy:  
 
                 {
@@ -19,7 +21,7 @@ Bucket policy:
                         "AWS": "*"
                       },
                       "Action": "s3:GetObject",
-                      "Resource": "arn:aws:s3:::ws2013byom/*"
+                      "Resource": "arn:aws:s3:::byom.winespectator.com/*"
                     }
                   ]
                 }
