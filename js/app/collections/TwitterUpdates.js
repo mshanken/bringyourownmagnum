@@ -34,7 +34,7 @@
         },
         fetchNext : function(fetchArgs){
           if(typeof this.nextPage !== "undefined" && this.nextPage !== "new"){
-            this.url = config.dataProviders.twitter.domain + this.nextPage;
+            this.url = config.dataProviders.twitter.domain + this.nextPage + "&exclude_retweets=1&exclude_replies=1";
             this.fetch({dataType:fetchArgs.dataType,reset:fetchArgs.reset});
           }else if(this.nextPage === "new"){
             this.fetch({dataType:fetchArgs.dataType,reset:fetchArgs.reset}); 
