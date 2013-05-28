@@ -82,8 +82,8 @@ p{
 .social{
   background-image: url("../img/noise2.png");
   border-top: 2px solid #000000;
-    margin: 2px 0 0;
-    padding: 20px 0;
+  margin: 2px 0 0;
+  padding: 20px 0;
 }
 .social{
 
@@ -181,12 +181,18 @@ a.thumbnail:hover, a.thumbnail:focus {
 
 /* Large desktop */
 @media (min-width: 1200px) {
-
+  .photos img{
+    max-width:300px;
+  }
+  #photoRoll{
+    width:1120px;
+    margin:auto;
+    padding-left:40px;
+  }
 }
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-
 }
 
 /* Landscape phone to portrait tablet */
@@ -202,4 +208,40 @@ a.thumbnail:hover, a.thumbnail:focus {
     padding: 0 20px;
   }
 
+}
+
+#loadingPlaceholder {
+  margin: auto;
+  width:85px;
+}
+
+#noResultsPlaceholder {
+  display:none;
+  margin: auto;
+  width:115px;
+}
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -ms-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+  -moz-transition-property: left, right, top;
+  -ms-transition-property: left, right, top;
+  -o-transition-property: left, right, top;
+  transition-property: left, right, top;
 }

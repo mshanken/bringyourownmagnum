@@ -23,6 +23,20 @@
           this.listenTo(this.collections.instagram,
                         "reset",
                         this._fireUpdate);
+          this.listenTo(this.collections.instagram,
+                        "resultsToggle",
+                        this._noResults);
+          this.listenTo(this.collections.twitter,
+                        "resultsToggle",
+                        this._noResults);
+        },
+        _noResults : function(evt){
+          if(this.collections.twitter.state.noResults === true && this.collections.instagram.state.noResults === true){
+           this.state.isLoading = false;
+           this.state.noResults = true;
+           this.trigger("resultsToggle");
+           this.trigger("loadToggle");
+          }
         },
         collections : {
           twitter   : new TwitterUpdates(),
@@ -30,39 +44,43 @@
         },
         state : {
           collectionsUpdate : 0,
-          COLLECTION_COUNT : 1,
-          isLoading: true
+          COLLECTION_COUNT : 2,
+          isLoading: true,
+          noResults : false
         },
         _fireUpdate : function(){
           var updatesCtx = this;
           this.state.collectionsUpdate += 1;
           if(this.state.collectionsUpdate >= this.state.COLLECTION_COUNT){
-            this.collections.twitter.each(function(){         // Unable to use .call
-                                                              // due to
-                                                              // restrictions on
-                                                              // bb.js' eval ctx's
+
+            // Instagram
+            this.collections.instagram.each(function(){
+              updatesCtx.add(updatesCtx.collections.instagram.pop());
+            });
+            this.collections.instagram.reset(undefined,{silent:true});
+
+            // Twitter
+            this.collections.twitter.each(function(){
               updatesCtx.add(updatesCtx.collections.twitter.pop());
             });
-            this.collections.twitter.reset(undefined,{silent:true}); // CLEAR THE COLLECTION, DONT
-            // FIRE A RESET EVENT
-
-            //this.collections.instagram.each(function(){         // Unable to use .call
-            //                                                  // due to
-            //                                                  // restrictions on
-            //                                                  // bb.js' eval ctx's
-            //  updatesCtx.add(updatesCtx.collections.instagram.pop());
-            //});
+            this.collections.twitter.reset(undefined,{silent:true});
+            
+            this.state.collectionsUpdate = 0;
             this.state.isLoading = false;
             this.trigger("loadToggle");
             this.trigger("clear");
           }
         },
         fetch : function(){
+          this.state.isLoading = true;
+          this.state.noResults = false;
+          this.trigger("loadToggle");
+          this.trigger("resultsToggle");
+
           this.collections.twitter.fetchNext({dataType:"jsonp",reset:true});
-          //this.collections.instagram.fetchNext({dataType:"jsonp",reset:true});
+          this.collections.instagram.fetchNext({dataType:"jsonp",reset:true});
         }
       });
-
       return defaultCollection;
 
     });

@@ -30,7 +30,6 @@
       // Defaults Event Listeners
       // Errors Event Listeners
       router.on('route:error', function () {
-        console.log("you dun messed up, kid...'Merrica!");
       });
   
       /*
