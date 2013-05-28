@@ -51,11 +51,11 @@
           this.collections.updates.fetch();
         },
         toggleLoading : function(){
-          //if(this.collections.updates.state.isLoading === true){
-          // $(this.els.loadingPlaceholder).fadeIn(this.constants.LOADING_TRANSITION_LENGTH);
-          //}else{
-          // $(this.els.loadingPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
-          //}
+          if(this.collections.updates.state.isLoading === true){
+           $(this.els.loadingPlaceholder).fadeIn(this.constants.LOADING_TRANSITION_LENGTH);
+          }else{
+           $(this.els.loadingPlaceholder).fadeOut(this.constants.LOADING_TRANSITION_LENGTH);
+          }
         },
         toggleResults : function(){
           if(this.collections.updates.state.noResults === true){
