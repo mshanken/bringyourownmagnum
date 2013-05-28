@@ -21,7 +21,7 @@
       render : function(){
         var attr = this.attributes;
         attr.cid = this.cid;
-        attr.url = "";
+        attr.url = this.attributes.link;
         attr.image_src = this.attributes.images.standard_resolution.url;
         attr.username = this.attributes.user.username;
 
