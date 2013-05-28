@@ -34,7 +34,7 @@
           if(this.collections.twitter.state.noResults === true && this.collections.instagram.state.noResults === true){
            this.state.isLoading = false;
            this.state.noResults = true;
-           this.trigger("resultsToggle");
+           this.trigger("resultsToggleCol");
            this.trigger("loadToggle");
           }
         },
@@ -75,7 +75,7 @@
           this.state.isLoading = true;
           this.state.noResults = false;
           this.trigger("loadToggle");
-          this.trigger("resultsToggle");
+          this.trigger("resultsToggleCol");
 
           this.collections.twitter.fetchNext({dataType:"jsonp",reset:true});
           this.collections.instagram.fetchNext({dataType:"jsonp",reset:true});

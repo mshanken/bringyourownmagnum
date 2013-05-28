@@ -21,20 +21,25 @@
           loadingPlaceholder : "#loadingPlaceholder",
           noResultsPlaceholder : "#noResultsPlaceholder"
         },
+        state : {
+          lastRequest : new Date()
+        },
         checkScroll : function(){
+          var currentDateTime = new Date();
           var currentPosition = $(document).scrollTop()+$(window).height(),
               documentHeight = $(document).height();
-          if(
-              (currentPosition  >= documentHeight - this.constants.INFINISCROLL_PADDING) &&
-              this.collections.updates.state.isLoading === false
-            ){
-            this.collections.updates.fetch();
+          if((currentDateTime - this.state.lastRequest) >= this.constants.CHECK_LOAD_TIMEOUT){
+              this.state.lastRequest = currentDateTime;
+              if((currentPosition  >= documentHeight - this.constants.INFINISCROLL_PADDING) && this.collections.updates.state.isLoading === false){
+                this.collections.updates.fetch();
+              }
           }
         },
         constants :{
           LOADING_TRANSITION_LENGTH : 300,
           NEW_IMAGE_TRANSITION_LENGTH: 500,
-          INFINISCROLL_PADDING : 200
+          INFINISCROLL_PADDING : 200,
+          CHECK_LOAD_TIMEOUT: 1000
         },
         collections : {},
         initialize: function(){
@@ -42,7 +47,7 @@
           $(window).on("scroll",this.checkScroll.bind(this)); // infiniscroll
           this.listenTo(this.collections.updates,"clear", this.transitionUpdates);
           this.listenTo(this.collections.updates,"loadToggle", this.toggleLoading);
-          this.listenTo(this.collections.updates,"resultsToggle",this.toggleResults);
+          this.listenTo(this.collections.updates,"resultsToggleCol",this.toggleResults);
           this.collections.updates.fetch();
         },
         toggleLoading : function(){
