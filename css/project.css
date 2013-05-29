@@ -238,6 +238,10 @@ a.thumbnail:hover, a.thumbnail:focus {
   transition-property: height, width;
 }
 
+.masonryTile {
+  display:none;
+}
+
 .masonry .masonry-brick {
   -webkit-transition-property: left, right, top;
   -moz-transition-property: left, right, top;
