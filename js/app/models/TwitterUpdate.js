@@ -29,7 +29,6 @@
           attr.username = this.attributes.from_user_name;
           return _.template(updateTemplate)(attr);
         }
-
       }
     });
     return Update;

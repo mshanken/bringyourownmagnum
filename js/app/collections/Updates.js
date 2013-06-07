@@ -66,7 +66,6 @@
               updatesCtx.collections.twitter.remove(model);
             });
             //this.collections.twitter.reset(undefined,{silent:true});
-            
             this.state.collectionsUpdate = 0;
             this.state.isLoading = false;
             this.trigger("loadToggle");
