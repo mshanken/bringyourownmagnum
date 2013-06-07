@@ -1,0 +1,70 @@
+<% /*
+
+  Update.html
+
+  cid           : ID (not stochastically unique, assigned by BB)
+  url           : URL
+  image_src     : URL, MIME: image/*
+  from_user_name      : STRING
+  data_provider : STRING, IS IN ['twitter','instagram']
+
+  TODO: Add guarding logic for data_providers. Previous attempt failed.
+  */%>
+<%
+if(data_provider === "twitter"){
+%>
+
+<li id="<%= cid %>" class="masonryTile nextUpdate" style="displaye:none" >
+  
+<a <% if(typeof url  !== "undefined"){ print(" href='"+url+"'");} %> class="thumbnail">
+  <img <% 
+        if(typeof image_src  !== "undefined"){ print(" src='"+image_src+"'");}
+        else{print(" src='http://placehold.it/500x500'")}
+       %>
+  >
+    <div class="caption">
+      <span> <% if(typeof username  !== "undefined"){
+        print("@"+username);}else{ print("NO USERNAME SPECIFIED");} %></span>
+      <%
+        if(data_provider === "twitter"){
+          print("<i class='ss-icon ss-social twitter'>&#xF611;</i>");
+        }else{
+         print("<i class='ss-icon ss-social instagram'>&#xF641;</i>");
+         }         
+        %>
+    </div><!--/caption-->
+  </a>
+</li>
+
+<%
+  }else if(data_provider === "instagram"){
+%>
+
+<li id="<%= cid %>" class="masonryTile nextUpdate" style="display:none">
+  
+<a <% if(typeof url  !== "undefined"){ print(" href='"+url+"'");} %> class="thumbnail">
+  <img <% 
+        if(typeof image_src  !== "undefined"){ print(" src='"+image_src+"'");}
+        else{print(" src='http://placehold.it/500x500'")}
+       %>
+  >
+    <div class="caption">
+      <span> <% if(typeof username  !== "undefined"){
+        print("@"+username);}else{ print("NO USERNAME SPECIFIED");} %></span>
+      <%
+        if(data_provider === "twitter"){
+          print("<i class='ss-icon ss-social twitter'>&#xF611;</i>");
+        }else{
+         print("<i class='ss-icon ss-social instagram'>&#xF641;</i>");
+         }         
+        %>
+    </div><!--/caption-->
+  </a>
+</li>
+
+
+<%
+}else{
+  print("Invalid data_provider");
+}
+%>
