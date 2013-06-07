@@ -5,7 +5,7 @@
   cid           : ID (not stochastically unique, assigned by BB)
   url           : URL
   image_src     : URL, MIME: image/*
-  from_user_name      : STRING
+  username      : STRING
   data_provider : STRING, IS IN ['twitter','instagram']
 
   TODO: Add guarding logic for data_providers. Previous attempt failed.
@@ -14,7 +14,7 @@
 if(data_provider === "twitter"){
 %>
 
-<li id="<%= cid %>" class="masonryTile nextUpdate" style="displaye:none" >
+<li id="<%= cid %>" class="masonryTile nextUpdate" style="display:none" >
   
 <a <% if(typeof url  !== "undefined"){ print(" href='"+url+"'");} %> class="thumbnail">
   <img <% 

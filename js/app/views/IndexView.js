@@ -48,6 +48,9 @@
           this.listenTo(this.collections.updates,"clear", this.transitionUpdates);
           this.listenTo(this.collections.updates,"loadToggle", this.toggleLoading);
           this.listenTo(this.collections.updates,"resultsToggleCol",this.toggleResults);
+
+          this.collections.updates.prefill();
+          this.transitionUpdates();
           this.collections.updates.fetch();
         },
         toggleLoading : function(){
@@ -68,11 +71,9 @@
           var $container = $(this.els.updates);
 
           _.each(this.collections.updates.models,function(update){
-            $(this.els.updates).append(update.render());},this);
-
-          //this.collections.updates.each(function(update){
-          //  $(this.els.updates).append(update.render());
-          //},this);
+            console.log(update.attributes);
+            $(this.els.updates).append(update.render());
+          },this);
 
             $container.masonry({
               itemSelector: '.masonryTile',
@@ -86,7 +87,7 @@
             }).imagesLoaded(function(){
               $container.masonry("reload");
               $container.children().each(function(ndx,el){
-                $(el).fadeIn(500);
+                $(el).fadeIn(100);
               });
             });
 

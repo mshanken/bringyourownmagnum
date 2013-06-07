@@ -15,6 +15,56 @@
 
       var defaultCollection  = Backbone.Collection.extend({
         initialize : function(){
+          this.add([
+            {
+              "url" : "http://twitter.com/Pedroncelli",
+              "image_src":"https://pbs.twimg.com/media/BLZXvpgCIAA7sER.jpg:large",
+              "from_user_name":"Pedroncelli Winery",
+              "from_user":"Pedroncelli",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"https://pbs.twimg.com/media/BLZXvpgCIAA7sER.jpg:large"}]}
+            },
+            {
+              "url" : "http://twitter.com/pmauney1",
+              "image_src":"https://pbs.twimg.com/media/BLZXvpgCIAA7sER.jpg:large",
+              "from_user_name":"Phillip Mauney",
+              "from_user":"pmauney1",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"https://pbs.twimg.com/media/BLZu9vSCMAE8ivp.jpg:large"}]}
+            },
+            {
+              "url" : "http://twitter.com/federighi007",
+              "image_src":"https://pbs.twimg.com/media/BLZvoNICYAAPzoX.jpg:large",
+              "from_user_name":"Mark W. Federighi",
+              "from_user":"federighi007",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"https://pbs.twimg.com/media/BLZvoNICYAAPzoX.jpg:large"}]}
+            },
+            {
+              "url" : "http://twitter.com/DuttonGoldfield",
+              "image_src":"http://d3j5vwomefv46c.cloudfront.net/photos/large/776171065.jpg?1369853609",
+              "from_user_name":"Dutton-Goldfield",
+              "from_user":"DuttonGoldfield",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"http://d3j5vwomefv46c.cloudfront.net/photos/large/776171065.jpg?1369853609"}]}
+            },
+            {
+              "url" : "http://twitter.com/Merryvale",
+              "image_src":"https://pbs.twimg.com/media/BLdq3CeCcAADaP8.jpg:large",
+              "from_user_name":"Merryvale Vineyards",
+              "from_user":"Merryvale",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"https://pbs.twimg.com/media/BLdq3CeCcAADaP8.jpg:large"}]}
+            },
+            {
+              "url" : "http://twitter.com/chrisogwine",
+              "image_src":"https://pbs.twimg.com/media/BLdr7sBCYAAAgIq.jpg:large",
+              "from_user_name":"Christopher O'Gorman",
+              "from_user":"chrisogwine",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"https://pbs.twimg.com/media/BLdr7sBCYAAAgIq.jpg:large"}]}
+            }
+          ]);
         },
         state : {
           noResults : false

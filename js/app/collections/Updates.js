@@ -16,6 +16,7 @@
     ], function(Backbone, $, _, Update, config, Events,TwitterUpdates,InstagramUpdates){
 
       var defaultCollection  = Backbone.Collection.extend({
+
         initialize: function () {
           this.listenTo(this.collections.twitter,
                         "reset",
@@ -55,24 +56,30 @@
 
             // Instagram
             this.collections.instagram.each(function(model){
-              updatesCtx.add(model);
-              updatesCtx.collections.instagram.remove(model);
-            });
-            //this.collections.instagram.reset(undefined,{silent:true});
+              this.add(model);
+              this.collections.instagram.remove(model);
+            }.bind(this));
 
             // Twitter
             this.collections.twitter.each(function(model){
-              updatesCtx.add(model);
-              updatesCtx.collections.twitter.remove(model);
-            });
-            //this.collections.twitter.reset(undefined,{silent:true});
+              this.add(model);
+              this.collections.twitter.remove(model);
+            }.bind(this));
+
             this.state.collectionsUpdate = 0;
             this.state.isLoading = false;
             this.trigger("loadToggle");
             this.trigger("clear");
           }
         },
+        prefill : function(){
+          this.collections.twitter.each(function(model){
+            this.add(model);
+          }.bind(this));
+          this.collections.twitter.reset();
+        },
         fetch : function(){
+
           this.state.isLoading = true;
           this.state.noResults = false;
           this.trigger("loadToggle");
