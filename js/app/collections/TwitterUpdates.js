@@ -63,6 +63,22 @@
               "from_user":"chrisogwine",
               "data_provider":"twitter",
               "entities":{media:[{media_url:"https://pbs.twimg.com/media/BLdr7sBCYAAAgIq.jpg:large"}]}
+            },
+            {
+              "url" : "http://twitter.com/jsthaler",
+              "image_src":"https://pbs.twimg.com/media/BML2J-pCEAARc0C.jpg:large",
+              "from_user_name":"Jessica Thaler",
+              "from_user":"jsthaler",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"https://pbs.twimg.com/media/BML2J-pCEAARc0C.jpg:large"}]}
+            },
+            {
+              "url" : "http://twitter.com/jsthaler",
+              "image_src":"https://pbs.twimg.com/media/BMK13NNCMAAvsVR.jpg:large",
+              "from_user_name":"Jessica Thaler",
+              "from_user":"jsthaler",
+              "data_provider":"twitter",
+              "entities":{media:[{media_url:"https://pbs.twimg.com/media/BMK13NNCMAAvsVR.jpg:large"}]}
             }
           ]);
         },
@@ -85,10 +101,12 @@
         fetchNext : function(fetchArgs){
           if(typeof this.nextPage !== "undefined" && this.nextPage !== "new"){
             this.url = config.dataProviders.twitter.domain + this.nextPage;
-            this.fetch({dataType:fetchArgs.dataType,reset:fetchArgs.reset});
+            //this.fetch({dataType:fetchArgs.dataType,reset:fetchArgs.reset});
+            this.trigger("reset");
           }else if(this.nextPage === "new"){
             this.url = config.dataProviders.twitter.url.replace(config.searchToken,config.hashTag);
-            this.fetch({dataType:fetchArgs.dataType,reset:fetchArgs.reset}); 
+            //this.fetch({dataType:fetchArgs.dataType,reset:fetchArgs.reset}); 
+            this.trigger("reset");
           }else{
             this.state.noResults = true;
             this.trigger("resultsToggle");
